@@ -1,0 +1,32 @@
+import React from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
+import { ErrorDisplay } from "./components/ErrorDisplay";
+import About from "./components/About";
+import Main from "./components/Main";
+
+import { Container } from "react-bootstrap";
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./style/App.scss";
+
+
+function App() {
+  return (
+    <Container fluid id="user-list-app">
+      <Switch>
+        <Route exact path="/home">
+          <Main />
+        </Route>
+        <Route exact path="/about" component={About} />
+        <Route exact path="/">
+          <Redirect to="/home" />
+        </Route>
+        <Route >
+          <ErrorDisplay message="Sorry, page not found" />
+        </Route>
+      </Switch>
+    </Container>
+  );
+}
+
+export default App;

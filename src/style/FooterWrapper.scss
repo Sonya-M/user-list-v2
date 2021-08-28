@@ -1,0 +1,36 @@
+@import "variables";
+@import "mixins";
+
+$footerHeight: 2rem;
+
+#user-list-app {
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: $footerHeight;
+    line-height: $footerHeight;
+    margin-top: $footerHeight;
+
+    color: white;
+    background-color: $navbarColor;
+    font-size: $footerFontSize;
+
+    @media screen and(min-width: 460px) {
+      justify-content: center;
+    }
+
+    .info {
+      @media screen and(min-width: 460px) {
+        position: absolute;
+        right: 1rem;
+      }
+    }
+  }
+
+}

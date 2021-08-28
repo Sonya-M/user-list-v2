@@ -1,0 +1,37 @@
+@import "variables";
+@import "mixins";
+
+#user-list-app {
+
+  #userList {
+    .cardEntry {
+      width: 16rem;
+      font-size: 90%;
+      div.imgContainer {
+        width: 100%;
+        position: relative;
+        img {
+          width: 100%;
+          display: block;
+        } 
+        p.nameInImage {
+          font-weight: lighter;
+          font-size: 1.6rem;
+          color: white;
+          text-shadow: 1px 1px gray;
+          position: absolute;
+          bottom: 0;
+          left: 1rem;
+          text-transform: capitalize;
+        }
+      }
+      &:hover {
+        // box-shadow: 0 5px 14px 7px rgba(0, 0, 0, 0.15);
+        @include boxShadow(0, 5px, 14px, 7px )
+      }
+      &.female {
+        background-color: $femaleColor;
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@import "variables";
+@import "mixins";
+
+#user-list-app {
+  nav {
+    background-color: $navbarColor;
+    color: white;
+    padding: $navbarPadding;
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: $defaultPadding;
+    h1 {
+      font-weight: lighter;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .menu {
+      line-height: 100%;
+      padding-left: $defaultPadding;
+      padding-right: $defaultPadding;
+      @media screen and(min-width: 460px) {
+        position: absolute;
+        right: 0;
+      }
+      .ViewIconSpan {
+        font-size: $iconSize;
+        @media screen and (max-width: 460px) {
+          font-size: $iconSize * .8;
+        }
+      }
+      .menuItem {
+        display: inline-block;
+        margin-left: $defaultPadding;
+        margin-right: $defaultPadding;
+        cursor: pointer;
+        &:hover {
+        transform: scale(1.05);
+        }
+      }
+    }
+  }
+}

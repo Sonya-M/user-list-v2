@@ -1,0 +1,24 @@
+@import "variables";
+@import "mixins";
+
+#user-list-app {
+
+  #userList {
+    .listEntry {
+      &:hover {
+        @include boxShadow(0, 0, 2px, 2px );
+      }
+      span.name {
+        font-size: 1.2em;
+      }
+      img {
+        display: block;
+        max-height: $userImgSize;
+        border-radius: 50%;
+      }
+      &.female {
+        background-color: $femaleColor;
+      }
+    }
+  }
+}
