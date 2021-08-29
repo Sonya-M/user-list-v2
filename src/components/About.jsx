@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import NavWrapper from "./NavWrapper";
 import FooterWrapper from "./FooterWrapper";
-import { Link } from "react-router-dom";
 
 export default function About() {
   return (

@@ -4,20 +4,22 @@ import FooterWrapper from "./FooterWrapper";
 import MainMenu from "./MainMenu";
 import MainContent from "./MainContent"
 
-import { delayedFetchUserData, fetchUserData } from "../data/userData.js";
+import { retrieveUserData, delayedRetrieveUserData, dataInStorage } from "../data/userData.js";
 import { getTimeAgo } from "../utilities/helperFns";
 
 class Main extends React.Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       userData: [],
-      gridView: false,
+      gridView: JSON.parse(localStorage.getItem("gridView")) || false,
       isLoading: true,
-      lastRefresh: 0,
+      lastRefresh: JSON.parse(localStorage.getItem("lastRefresh")) || 0,
       timeFromLastRefresh: "",
     };
+
     this.handleToggleView = this.handleToggleView.bind(this);
     this.handleRefresh = this.handleRefresh.bind(this);
   }
@@ -30,28 +32,36 @@ class Main extends React.Component {
 
   handleRefresh() {
     this.setState({ isLoading: true });
-    this.loadData();
+    this.loadData(true);
   }
 
   componentDidMount() {
-    this.loadData();
-    this.intervalID = setInterval(this.calculateTimeSinceRefresh.bind(this), 1000);
+    this.loadData(false);
+    this.intervalID =
+      setInterval(this.calculateTimeSinceRefresh.bind(this), 1000);
   }
 
   componentWillUnmount() {
     clearInterval(this.intervalID);
+    // save view preferences only once instead of on each toggleView
+    localStorage.setItem("gridView", this.state.gridView);
+    localStorage.setItem("lastRefresh", this.state.lastRefresh);
   }
 
-  loadData() {
-    // fetchUserData()
-    delayedFetchUserData(1000) // simulate waiting for response...
+  loadData(fetchNew) {
+    // check if new content will be fetched regardless of fetchNew value:
+    // (need it to set the value of lastRefresh)
+    if (!fetchNew && !dataInStorage()) fetchNew = true;
+    retrieveUserData(fetchNew)
+      // delayedRetrieveUserData(fetchNew, 1000) // simulate waiting for response...
       .then((userList) => {
-        this.setState({
-          userData: userList,
-          isLoading: false,
-          lastRefresh: Date.now(),
+        this.setState((prevState) => {
+          return {
+            userData: userList,
+            isLoading: false,
+            lastRefresh: fetchNew ? Date.now() : prevState.lastRefresh,
+          }
         });
-        // console.log(this.state.userData);
       })
       .catch((error) => {
         console.log(error);
@@ -66,7 +76,7 @@ class Main extends React.Component {
     if (this.state.lastRefresh) {
       const time = getTimeAgo(this.state.lastRefresh);
       this.setState({
-        timeFromLastRefresh: "Last Update: " + time,
+        timeFromLastRefresh: "Last update: " + time + " ago",
       });
     }
   }

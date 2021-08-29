@@ -6,7 +6,8 @@ $footerHeight: 2rem;
 #user-list-app {
   footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around; // if single item in footer, this centers it
+    // in the middle, unlike "space-between"
     align-items: center;
     
     position: fixed;
