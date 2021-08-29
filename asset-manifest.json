@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Sonya-M/Sonya-M.github.io/user-list-v2/static/css/main.6a7b2006.chunk.css",
+    "main.js": "/Sonya-M/Sonya-M.github.io/user-list-v2/static/js/main.8c9de73b.chunk.js",
+    "main.js.map": "/Sonya-M/Sonya-M.github.io/user-list-v2/static/js/main.8c9de73b.chunk.js.map",
+    "runtime-main.js": "/Sonya-M/Sonya-M.github.io/user-list-v2/static/js/runtime-main.d114633d.js",
+    "runtime-main.js.map": "/Sonya-M/Sonya-M.github.io/user-list-v2/static/js/runtime-main.d114633d.js.map",
+    "static/css/2.818011ed.chunk.css": "/Sonya-M/Sonya-M.github.io/user-list-v2/static/css/2.818011ed.chunk.css",
+    "static/js/2.172ae0c7.chunk.js": "/Sonya-M/Sonya-M.github.io/user-list-v2/static/js/2.172ae0c7.chunk.js",
+    "static/js/2.172ae0c7.chunk.js.map": "/Sonya-M/Sonya-M.github.io/user-list-v2/static/js/2.172ae0c7.chunk.js.map",
+    "index.html": "/Sonya-M/Sonya-M.github.io/user-list-v2/index.html",
+    "static/css/2.818011ed.chunk.css.map": "/Sonya-M/Sonya-M.github.io/user-list-v2/static/css/2.818011ed.chunk.css.map",
+    "static/css/main.6a7b2006.chunk.css.map": "/Sonya-M/Sonya-M.github.io/user-list-v2/static/css/main.6a7b2006.chunk.css.map",
+    "static/js/2.172ae0c7.chunk.js.LICENSE.txt": "/Sonya-M/Sonya-M.github.io/user-list-v2/static/js/2.172ae0c7.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d114633d.js",
+    "static/css/2.818011ed.chunk.css",
+    "static/js/2.172ae0c7.chunk.js",
+    "static/css/main.6a7b2006.chunk.css",
+    "static/js/main.8c9de73b.chunk.js"
+  ]
+}
