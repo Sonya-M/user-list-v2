@@ -14,12 +14,12 @@ function App() {
   return (
     <Container fluid id="user-list-app">
       <Switch>
-        <Route exact path="/home">
+        <Route exact path="/">
           <Main />
         </Route>
         <Route exact path="/about" component={About} />
-        <Route exact path="/">
-          <Redirect to="/home" />
+        <Route exact path="/home">
+          <Redirect to="/" />
         </Route>
         <Route >
           <ErrorDisplay message="Sorry, page not found" />
