@@ -19,7 +19,7 @@ function App() {
       <DataContextProvider>
         <NavWrapper />
         <Switch>
-          <Route exact path="/user-list-v2">
+          <Route exact path="/user-list-v2/">
             <Main />
           </Route>
           <Route exact path="/about" component={About} />

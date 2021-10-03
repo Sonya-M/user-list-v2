@@ -25,7 +25,6 @@ export class DataContextProvider extends React.Component {
       gridView: JSON.parse(localStorage.getItem("gridView")) || false,
       isLoading: true,
       lastRefresh: JSON.parse(localStorage.getItem("lastRefresh")) || 0,
-      timeFromLastRefresh: "",
     };
 
     this.handleToggleView = this.handleToggleView.bind(this);
@@ -34,7 +33,7 @@ export class DataContextProvider extends React.Component {
   handleToggleView() {
     this.setState((state) => {
       return { gridView: !state.gridView };
-    });
+    }, () => { localStorage.setItem("gridView", this.state.gridView); });
   }
 
   handleRefresh() {
@@ -47,9 +46,6 @@ export class DataContextProvider extends React.Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.intervalID);
-    // save view preferences only once instead of on each toggleView
-    localStorage.setItem("gridView", this.state.gridView);
     localStorage.setItem("lastRefresh", this.state.lastRefresh);
   }
 
@@ -66,7 +62,7 @@ export class DataContextProvider extends React.Component {
             isLoading: false,
             lastRefresh: fetchNew ? Date.now() : prevState.lastRefresh,
           };
-        });
+        }, () => { localStorage.setItem("lastRefresh", this.state.lastRefresh); });
       })
       .catch((error) => {
         console.log(error);
