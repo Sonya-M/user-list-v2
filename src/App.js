@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { ErrorDisplay } from "./components/ErrorDisplay";
 import About from "./components/About";
 import Main from "./components/Main";
+import SingleUser from "./components/SingleUser";
 
 import { Container } from "react-bootstrap";
 
@@ -18,6 +19,7 @@ function App() {
           <Main />
         </Route>
         <Route exact path="/about" component={About} />
+        <Route exact path="/user/:id" component={SingleUser} />
         <Route exact path="/home">
           <Redirect to="/" />
         </Route>
