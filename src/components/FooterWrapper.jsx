@@ -29,7 +29,7 @@ export default function FooterWrapper(props) {
       <div>© 2021 Sonja</div>
 
       <Fragment>
-        {location.pathname === "/" && (
+        {location.pathname === "/user-list-v2" && (
           <div className="info">{timeFromLastRefresh}</div>
         )}
       </Fragment>

@@ -9,9 +9,9 @@ export default function NavWrapper(props) {
   return (
     <nav>
       <h1>
-        <Link to="/">User List</Link>
+        <Link to="/user-list-v2">User List</Link>
       </h1>
-      {location.pathname === "/" && (
+      {location.pathname === "/user-list-v2" && (
         <div className={"menu "}>
           <MainMenu />
         </div>

@@ -19,14 +19,12 @@ function App() {
       <DataContextProvider>
         <NavWrapper />
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/user-list-v2">
             <Main />
           </Route>
           <Route exact path="/about" component={About} />
           <Route exact path="/user/:id" component={SingleUser} />
-          <Route exact path="/home">
-            <Redirect to="/" />
-          </Route>
+
           <Route >
             <ErrorDisplay message="Sorry, page not found" />
           </Route>
