@@ -44,16 +44,29 @@ export function maskEmail(email) {
 }
 
 /**
- * Performs a case-insensitive search to determine whether one string may be 
- * found within another string, returning true or false as appropriate
- * @param {string} str1 
- * @param {string} str2 
- * @returns {boolean}
+ * 
+ * @param {string} stringToSearch 
+ * @param {string} queryString 
+ * @returns true if stringToSearch includes all of the words in query string, 
+ * in any order (so if one types the surname before the first name,
+ * the return val is still true)
  */
-export function includesIgnoreCase(searchString, queryString) {
-  return queryString.length === 0
-    || (searchString.toLowerCase()).includes(queryString.toLowerCase());
-}
+export const includesIgnoreCase = (stringToSearch, queryString) => {
+  if (queryString.length === 0) return true;
+  queryString = (queryString.trim());
+  let queries = queryString.split(/\s+/);
+
+  for (let i = 0; i < queries.length; i++) {
+    if (i === queries.length - 1) queries[i] = new RegExp("\\b" + queries[i], "i");
+    else queries[i] = new RegExp("\\b" + queries[i] + "\\b", "i");
+  }
+  for (let i = 0; i < queries.length; i++) {
+    if (!stringToSearch.match(queries[i])) return false;
+  }
+
+  return true;
+};
+
 
 // source: https://stackoverflow.com/questions/3177836/how-to-format-time-since-xxx-e-g-4-minutes-ago-similar-to-stack-exchange-site
 /**
