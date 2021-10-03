@@ -1,0 +1,11 @@
+button#goToTop {
+  all: unset;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 3rem;
+  right: 1rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  cursor: pointer;
+  padding: 0.6rem;
+}

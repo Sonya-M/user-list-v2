@@ -1,0 +1,42 @@
+@import "variables";
+
+#single-user-page {
+  .container {
+    max-width: 600px;
+  }
+  .goBack {
+    color: $navbarColor;
+    size: 2rem;
+  }
+  header {
+    margin: 1rem auto;
+    width: 100%;
+  }
+  h1 {
+    color: $navbarColor;
+    display: block;
+    text-align: center;
+    word-break: break-word;
+    @media screen and (min-width: 400px) {
+      display: inline-block;
+    }
+  }
+
+  tbody th {
+    text-align: center;
+  }
+
+  table {
+    max-width: 700px;
+  }
+
+  .userImg {
+    border-radius: 50%;
+    display: block;
+    margin: 1rem auto;
+    @media screen and (min-width: 400px) {
+      display: inline-block;
+      margin: 2rem;
+    }
+  }
+}

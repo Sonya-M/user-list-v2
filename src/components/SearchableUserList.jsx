@@ -1,10 +1,9 @@
 import React from "react";
 import { Form, InputGroup } from "react-bootstrap";
-
-
-import { Search } from "react-bootstrap-icons"
-import "../style/SearchableUserList.scss"
+import { Search } from "react-bootstrap-icons";
+import ScrollToTopBtn from "./ScrollToTopBtn";
 import { UserList } from "./UserList";
+import "../style/SearchableUserList.scss";
 
 class SearchableUserList extends React.Component {
   constructor(props) {
@@ -32,13 +31,13 @@ class SearchableUserList extends React.Component {
 
   render() {
     return (
-      <div>
-        <Form
-          id="searchUsers"
-          className="d-flex justify-content-center m-2">
+      <React.Fragment>
+        <Form id="searchUsers" className="d-flex justify-content-center m-2">
           {/* InputGroup needed for the icon */}
           <InputGroup className="mb-3">
-            <InputGroup.Text><Search /></InputGroup.Text>
+            <InputGroup.Text>
+              <Search />
+            </InputGroup.Text>
             <Form.Control
               className="searchBox"
               type="text"
@@ -46,15 +45,13 @@ class SearchableUserList extends React.Component {
               placeholder="Search people"
               value={this.state.filterText}
               onInput={(e) => this.handleInput(e)}
-              onKeyDown={e => this.handleKeyDown(e)} // this worked to prevent default on pressing "enter"
+              onKeyDown={(e) => this.handleKeyDown(e)} // this worked to prevent default on pressing "enter"
             />
           </InputGroup>
         </Form>
-        <UserList
-          {...this.props}
-          filterText={this.state.filterText}
-        />
-      </div>
+        <UserList {...this.props} filterText={this.state.filterText} />
+        <ScrollToTopBtn />
+      </React.Fragment>
     );
   }
 }

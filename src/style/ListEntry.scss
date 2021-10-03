@@ -2,11 +2,14 @@
 @import "mixins";
 
 #user-list-app {
-
   #userList {
     .listEntry {
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
       &:hover {
-        @include boxShadow(0, 0, 2px, 2px );
+        @include boxShadow(0, 0, 2px, 2px);
       }
       span.name {
         font-size: 1.2em;

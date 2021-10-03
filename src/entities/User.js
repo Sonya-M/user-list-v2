@@ -8,8 +8,10 @@ class User {
   #dob;
   #img;
   #gender;
+  #location;
+  #cell;
 
-  constructor(id, firstName, lastName, email, dob, img, gender) {
+  constructor(id, firstName, lastName, email, dob, img, gender, location, cell) {
     this.#id = id;
     this.#firstName = firstName;
     this.#lastName = lastName;
@@ -17,6 +19,8 @@ class User {
     this.#dob = dob;
     this.#img = img;
     this.#gender = gender;
+    this.#location = location;
+    this.#cell = cell;
   }
 
   get id() { return this.#id; }
@@ -33,7 +37,15 @@ class User {
   get email() {
     return utils.maskEmail(this.#email);
   }
-
+  get fullEmail() {
+    return this.#email;
+  }
+  get location() {
+    return this.#location;
+  }
+  get cell() {
+    return this.#cell;
+  }
 }
 
 export default User;

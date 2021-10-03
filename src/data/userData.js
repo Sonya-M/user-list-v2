@@ -2,7 +2,7 @@ import User from "../entities/User";
 import * as utils from "../utilities/helperFns";
 
 // const ENDPOINT = "https://gist.githubusercontent.com/nenadbugaric/385c0200f1886180f6143cad72fadeac/raw/0bc527c2977debe86e18829b42c3abab235de4ce/RandomUsers.js";
-const ENDPOINT = "https://randomuser.me/api/?results=15";
+const ENDPOINT = "https://randomuser.me/api/?results=30";
 
 /**
  * If data is already in local storage, returns stored data,
@@ -45,6 +45,7 @@ function fetchUserData() {
       })
       .then((json) => {
         localStorage.setItem("userData", JSON.stringify(json.results));
+        console.log(json.results);
         return mapToUserObjects(json.results);
       })
     // leave catching errors to the app
@@ -62,7 +63,7 @@ export function delayedRetrieveUserData(fetchNew, millis) {
 function mapToUserObjects(rawJsonList) {
   return rawJsonList.map((user) => {
     return new User(user.login.uuid, user.name.first, user.name.last,
-      user.email, user.dob.date, user.picture.large, user.gender);
+      user.email, user.dob.date, user.picture.large, user.gender, user.location, user.cell);
   })
 }
 

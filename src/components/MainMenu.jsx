@@ -5,8 +5,11 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { ArrowClockwise, ListUl, Grid } from "react-bootstrap-icons";
+import { useContext } from "react";
+import DataContext from "../store/data-context";
 
 export default function MainMenu(props) {
+  const ctx = useContext(DataContext);
 
   return (
     <Fragment>
@@ -14,17 +17,15 @@ export default function MainMenu(props) {
         <span className="menuItem">About</span>
       </Link>
       <span className="menuItem ViewIconSpan">
-        <ArrowClockwise
-          onClick={props.onRefresh}
-        />{" "}
+        <ArrowClockwise onClick={ctx.onRefresh} />{" "}
       </span>
       <span className=" menuItem ViewIconSpan">
-        {props.gridView
-          ? (<ListUl
-            onClick={props.onToggleView} />)
-          : (<Grid onClick={props.onToggleView} />)
-        }
+        {ctx.gridView ? (
+          <ListUl onClick={ctx.onToggleView} />
+        ) : (
+          <Grid onClick={ctx.onToggleView} />
+        )}
       </span>
     </Fragment>
-  )
+  );
 }
